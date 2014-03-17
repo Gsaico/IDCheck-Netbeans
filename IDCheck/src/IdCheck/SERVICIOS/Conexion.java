@@ -13,6 +13,8 @@ public class Conexion {
 
     public Connection conexion=null;
     public Statement us_st=null;
+    public PreparedStatement ps=null;
+    
     public DatabaseMetaData dbmt;
     public String s_conexion;
     public ResultSet resultado=null;

@@ -4,9 +4,9 @@ package IdCheck.NEGOCIOS;
 
 import IdCheck.DB.PersonalBD;
 import java.io.FileInputStream;
-import java.sql.Blob;
+
 import java.sql.SQLException;
-import java.util.Date;
+
 
 
 public class Personal {
@@ -14,7 +14,7 @@ public class Personal {
    private String idpersonal; 
    private String nombres;
    private String apellidos;
-   private String  fechanac;
+   private String fechanac;
    private String cargo;
   private FileInputStream foto;
   //private Blob foto;

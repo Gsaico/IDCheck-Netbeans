@@ -33,13 +33,38 @@ public class PersonalBD {
 
         if (cdb.resultado != null) {
             if (cdb.resultado.next()) {
-                cdb.un_sql = "UPDATE personal SET  Nombres='" + p.getNombres()
-                        + "', Apellidos='" + p.getApellidos() + "', FechaNac='" + p.getFechanac() + "',  Cargo='" + p.getCargo()
-                        + "', Foto="+ p.getFoto()  +", idEmpresaColaboradora='" + p.getIdempresacolaboradora()
-                        + "', idTipoPersonal='" + p.getIdtipopersonal() + "' WHERE idPersonal='" + p.getIdpersonal() + "'";
+cdb = ConectarServicio.getInstancia().getConexionDB();
+                cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
+                        + "Nombres= ? , "
+                        + "Apellidos= ? ,"
+                        + "FechaNac= ? ,"
+                        + "Cargo= ? ,"
+                        + "Foto= ? ,"
+                        + "idEmpresaColaboradora= ? ,"
+                        + "idTipoPersonal= ? "
+                        + "WHERE idPersonal= ? ");
 
-                cdb.us_st.executeUpdate(cdb.un_sql);
+                cdb.ps.setString(1, p.getNombres());
+                cdb.ps.setString(2, p.getApellidos());
+                cdb.ps.setString(3, p.getFechanac());
+                cdb.ps.setString(4, p.getCargo());
+             if (p.getFoto() != null) {
+                    cdb.ps.setBinaryStream(5, p.getFoto());
+                }
+                cdb.ps.setString(6, p.getIdempresacolaboradora());
+                cdb.ps.setString(7, p.getIdtipopersonal());
+                cdb.ps.setString(8, p.getIdpersonal());
 
+               
+               cdb.ps.executeUpdate();
+               
+
+                //cdb.un_sql = "UPDATE personal SET  Nombres='" + p.getNombres()
+                //        + "', Apellidos='" + p.getApellidos() + "', FechaNac='" + p.getFechanac() + "',  Cargo='" + p.getCargo()
+                //        + "', Foto="+ p.getFoto()  +", idEmpresaColaboradora='" + p.getIdempresacolaboradora()
+                //       + "', idTipoPersonal='" + p.getIdtipopersonal() + "' WHERE idPersonal='" + p.getIdpersonal() + "'";
+                // cdb.us_st.executeUpdate(cdb.un_sql);
+                
             } else {
                 cdb.un_sql = "INSERT INTO personal VALUES(  '" + p.getIdpersonal() + "', '" + p.getNombres()
                         + "', '" + p.getApellidos() + "','" + p.getFechanac() + "'," + p.getCargo()
@@ -60,8 +85,8 @@ public class PersonalBD {
         }
 
     }
-    
-     public Personal Leer() throws ClassNotFoundException,
+
+    public Personal Leer() throws ClassNotFoundException,
             InstantiationException,
             IllegalAccessException,
             SQLException {
@@ -77,7 +102,7 @@ public class PersonalBD {
                 p.setApellidos(cdb.resultado.getString("Apellidos"));
                 p.setFechanac(cdb.resultado.getString("FechaNac"));
                 p.setCargo(cdb.resultado.getString("Cargo"));
-              //  p.setFoto(cdb.resultado.getByte("Foto"));
+                //  p.setFoto(cdb.resultado.getByte("Foto"));
                 p.setIdempresacolaboradora(cdb.resultado.getString("idEmpresaColaboradora"));
                 p.setIdtipopersonal(cdb.resultado.getString("idTipoPersonal"));
             } else {
@@ -90,8 +115,7 @@ public class PersonalBD {
 
     }
 
-   
-     public void Borrar() throws ClassNotFoundException,
+    public void Borrar() throws ClassNotFoundException,
             InstantiationException,
             IllegalAccessException,
             SQLException {
@@ -100,6 +124,6 @@ public class PersonalBD {
         cdb.un_sql = "DELETE FROM personal WHERE idPersonal='" + p.getIdpersonal() + "'";
         cdb.us_st.executeUpdate(cdb.un_sql);
     }
-     
-     
+
+
 }

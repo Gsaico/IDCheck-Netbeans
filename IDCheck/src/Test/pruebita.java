@@ -80,13 +80,16 @@ catch(java.lang.InstantiationException e)
     //hdhdhdhddh
 Personal personal1=new Personal();
 Date formatoFecha = new SimpleDateFormat("yyyy/mm/dd").parse("1982/10/26");
-personal1.setIdpersonal("07484492");
-personal1.setNombres("Grimaldo Percy");
-personal1.setApellidos("Saico Ccapa");
-personal1.setFechanac("1999/12/12");
+personal1.setIdpersonal("07523648");
+personal1.setNombres("nombres");
+personal1.setApellidos("Apellidos");
+personal1.setFechanac("2000/12/12");
 personal1.setCargo("2");
 //personal1.setFoto(nothing);
- String rutafoto = "C:\\Users\\Public\\Pictures\\Sample Pictures\\Desert.jpg";
+ 
+try{
+
+String rutafoto = "C:\\Users\\Public\\Pictures\\Sample Pictures\\death.jpg";
   FileInputStream fis =null;
    
                 File file = new File(rutafoto);
@@ -96,14 +99,19 @@ personal1.setCargo("2");
           //  var=fis;
             
 
-   personal1.setFoto(fis);                 
-                    
+personal1.setFoto(fis);                 
+}
+catch(Exception e)
+
+{
+System.out.println("Ocurrio la Excepcion"+ e.toString());
+}
 ///jdsjhdhdhdfh
 personal1.setIdempresacolaboradora("20100098041");
 personal1.setIdtipopersonal("2");
 personal1.grabar();
 
-System.out.println(personal1.getApellidos());
+System.out.println(personal1.getNombres());
 
  
 }
