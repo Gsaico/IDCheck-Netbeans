@@ -1,0 +1,9 @@
+databaseclass=IdCheck.SERVICIOS.Conexion_mySQL
+jdbc=jdbc:mysql://
+driver=com.mysql.jdbc.Driver
+databasehost=localhost
+database=id_check_db
+username=root
+password=12345
+options=charSet=LATIN1
+mostrarproperties=si
