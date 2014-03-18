@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -58,7 +59,9 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         lblFoto = new javax.swing.JLabel();
         btnInsertImage = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        btnNew = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
+        btnNew1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,8 +105,9 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         jLabel3.setText("Nombres:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel2.setText("DNI");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, -1));
+        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel2.setText("Ingrese DNI para modificar");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 180, -1));
 
         lblFoto.setBackground(new java.awt.Color(0, 0, 0));
         lblFoto.setText("Imagen");
@@ -112,26 +116,42 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 lblFotoMouseClicked(evt);
             }
         });
-        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 110, 160));
+        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 110, 160));
 
-        btnInsertImage.setText("jButton1");
+        btnInsertImage.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\devices\\camera.png")); // NOI18N
         btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsertImageActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInsertImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+        getContentPane().add(btnInsertImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, -1, -1));
 
-        btnSave.setText("jButton2");
+        btnSave.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\document-save-as.png")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        btnNew.setText("jButton3");
-        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
+        btnImprimir.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\fileprint.png")); // NOI18N
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+
+        btnNew1.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\add.png")); // NOI18N
+        btnNew1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNew1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
+
+        jLabel7.setText("DNI");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,90 +166,81 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
 
     private void btnInsertImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertImageActionPerformed
     //creamos un objeto de JFILECHOOSER para que se abra una ventada de exploracion de archivos
-        JFileChooser dlg = new JFileChooser();
+       // JFileChooser dlg = new JFileChooser();
         //del objeto creado llamados al metodo setFileFilter para que solo busque archivos con extension .jpg
-        dlg.setFileFilter(filter);
+        //dlg.setFileFilter(filter);
         //Abre la ventana de dialogo
-        int option = dlg.showOpenDialog(this);
+      //  int option = dlg.showOpenDialog(this);
         //Si hace click en el boton abrir del dialogo
-        if (option == JFileChooser.APPROVE_OPTION) {
+       // if (option == JFileChooser.APPROVE_OPTION) {
             //Obtiene nombre del archivo seleccionado
-            String fil = dlg.getSelectedFile().getPath();
+            
+          //  String fil = dlg.getSelectedFile().getPath();
             //se obtiene la direccion donde se guardara la imagen
-            String file = dlg.getSelectedFile().toString();
-            lblFoto.setIcon(new ImageIcon(fil));
+          //  String file = dlg.getSelectedFile().toString();
+          //  lblFoto.setIcon(new ImageIcon(fil));
             //Modificando la imagen
-            ImageIcon icon = new ImageIcon(fil);
+          //  ImageIcon icon = new ImageIcon(fil);
             //Se extrae la imagen del icono
-            Image img = icon.getImage();
+          //  Image img = icon.getImage();
             //Se modifica su tamaño
-            Image newimg = img.getScaledInstance(155, 175, java.awt.Image.SCALE_SMOOTH);
+           // Image newimg = img.getScaledInstance(155, 175, java.awt.Image.SCALE_SMOOTH);
             //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
-            ImageIcon newIcon = new ImageIcon(newimg);
+          //  ImageIcon newIcon = new ImageIcon(newimg);
             //Se coloca el nuevo icono modificado
-            lblFoto.setIcon(newIcon);
+          //  lblFoto.setIcon(newIcon);
             //Se cambia el tamaño de la etiqueta
-            lblFoto.setSize(155, 175);
+          //  lblFoto.setSize(155, 175);
             //TXTRUTAFOTO.setText(fil);
-            Rutafoto =  fil;
+            
+            
+        String fils = null;
+            
+        JFileChooser se = new JFileChooser();
+        se.setFileSelectionMode(JFileChooser.FILES_ONLY);       
+        int estado = se.showOpenDialog(null);
+        if(estado == JFileChooser.APPROVE_OPTION)
+        {
+            try {
+                 
+               FileInputStream fis =  new FileInputStream(se.getSelectedFile());
+                int longitudBytes = (int)se.getSelectedFile().length();
+                
+                fils = se.getSelectedFile().getPath();
+                
+                Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT);
+                lblFoto.setIcon(new ImageIcon(icono));
+                lblFoto.updateUI(); 
+              //  lblFoto.setIcon(new ImageIcon(fil));
+                
+            } catch (FileNotFoundException ex) {ex.printStackTrace();}
+            catch (IOException ex){ex.printStackTrace();}
+        }
+            
+            
+            
+            
+            Rutafoto =  fils;
             
 //seletamos la variable local con la ruta de la imagen
-}
+
 
 
     }//GEN-LAST:event_btnInsertImageActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
        
-            //SE VALIDAN LOS CAMPOS DE TEXTO ANTES DE SER GUARDADOS PARA VER SI ALGUNO DE ELLOS ESTAN VACIOS, SI ASI FUESE MUESTRA
-        //UN MENSAJE CORRESPONDIENTE AL CAMPO QUE ESTA SIN LLENAR
-         if (Rutafoto.length() == 0) {
-            JOptionPane.showMessageDialog(null, "FALTA SUBIR FOTO", "VERIFICAR", JOptionPane.WARNING_MESSAGE);
-        } else {
-            //ruta del archivo de imagen
-           
-            
-           FileInputStream fis =null;
-           
-            try {
-                File file = new File(Rutafoto);
-                fis = new FileInputStream(file);
-                
-                try (PreparedStatement pstm = con.getConnection().prepareStatement("{call INSERTARDOCENTE (?,?,?,?,?,?,?)}")) {
-                    pstm.setString(1, TXTDNI.getText());
-                    pstm.setString(2, TXTNOMBRED.getText());
-                    pstm.setString(3, TXTAPELLIDOP.getText());
-                    pstm.setString(4, TXTAPELLIDOM.getText());
-                    pstm.setString(5, TXTCELUNAR.getText());
-                    pstm.setString(6, TXTCORREO.getText());
-                    //convertirlo a binarios
-                    pstm.setBinaryStream(7, fis, (int) file.length());
-                    
-                    ResultSet r = pstm.executeQuery();
-                    
-                    String respuesta = "";
-                    while (r.next()) {
-                        respuesta = r.getString(1).toString();
-                    }
-                    JOptionPane.showMessageDialog(null, respuesta, "CONFIRMACION", JOptionPane.WARNING_MESSAGE);
-                    //falta metodo cargardocente, limpiar,FormatoDocente                       
-                    ocultamensaje();
-                    TXTFOTO.setIcon(new ImageIcon(getClass().getResource("/Imagenes/guji.png")));
-                }
-            } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "NO SE ENCONTRARON LOS ARCHIVOS REQUERIDOS PARA EL REGISTRO DEL DOCENTE", "ERROR", JOptionPane.WARNING_MESSAGE);
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR", "ERROR", JOptionPane.WARNING_MESSAGE);
-            } finally {
-                try {
-                    fis.close();
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "OCURRIO UN ERROR AL MOMENTO DE CERRAR LA CONEXION CON LA BASE DE DATOS", "ERROR", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        }    
+             
         
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void btnNew1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNew1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,8 +278,9 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnInsertImage;
-    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnNew1;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cmbCargo;
     private javax.swing.JComboBox cmbEmpresa;
@@ -279,6 +291,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JTextField txtApellidos;

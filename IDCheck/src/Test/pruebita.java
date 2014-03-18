@@ -9,6 +9,7 @@ package Test;
 import IdCheck.NEGOCIOS.Personal;
 import IdCheck.SERVICIOS.ConectarServicio;
 import IdCheck.SERVICIOS.Conexion;
+import IdCheck.UI.frmPersonal;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,42 +78,9 @@ catch(java.lang.InstantiationException e)
          System.exit(-1);
         }  
     
-    //hdhdhdhddh
-Personal personal1=new Personal();
-Date formatoFecha = new SimpleDateFormat("yyyy/mm/dd").parse("1982/10/26");
-personal1.setIdpersonal("07523648");
-personal1.setNombres("nombres");
-personal1.setApellidos("Apellidos");
-personal1.setFechanac("2000/12/12");
-personal1.setCargo("2");
-//personal1.setFoto(nothing);
- 
-try{
 
-String rutafoto = "C:\\Users\\Public\\Pictures\\Sample Pictures\\death.jpg";
-  FileInputStream fis =null;
-   
-                File file = new File(rutafoto);
-                fis = new FileInputStream(file);
-                            
-         //   Blob var;
-          //  var=fis;
-            
-
-personal1.setFoto(fis);                 
-}
-catch(Exception e)
-
-{
-System.out.println("Ocurrio la Excepcion"+ e.toString());
-}
-///jdsjhdhdhdfh
-personal1.setIdempresacolaboradora("20100098041");
-personal1.setIdtipopersonal("2");
-personal1.grabar();
-
-System.out.println(personal1.getNombres());
-
+frmPersonal personalform1= new frmPersonal();
+personalform1.show();
  
 }
   
