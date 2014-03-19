@@ -4,6 +4,7 @@ package IdCheck.NEGOCIOS;
 
 import IdCheck.DB.PersonalBD;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import java.sql.SQLException;
 
@@ -105,5 +106,12 @@ public class Personal {
    PersonalBD pdb= new PersonalBD(this);
    pdb.Leer();
        return  pdb.Leer();
+   }
+     
+     public CustomImageIcon leerFoto(String idDNI) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException, IOException
+   {
+       PersonalBD pdb= new PersonalBD(this);
+       pdb.DevolverFoto(idDNI);
+       return  pdb.DevolverFoto(idDNI);
    }
 }

@@ -5,10 +5,15 @@
  */
 package IdCheck.DB;
 
+import IdCheck.NEGOCIOS.CustomImageIcon;
 import IdCheck.NEGOCIOS.Personal;
 import IdCheck.SERVICIOS.ConectarServicio;
 import IdCheck.SERVICIOS.Conexion;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -102,7 +107,7 @@ cdb = ConectarServicio.getInstancia().getConexionDB();
                 p.setApellidos(cdb.resultado.getString("Apellidos"));
                 p.setFechanac(cdb.resultado.getString("FechaNac"));
                 p.setCargo(cdb.resultado.getString("Cargo"));
-                //  p.setFoto(cdb.resultado.getByte("Foto"));
+                //p.setFoto(cdb.resultado.getBinaryStream("Foto"));
                 p.setIdempresacolaboradora(cdb.resultado.getString("idEmpresaColaboradora"));
                 p.setIdtipopersonal(cdb.resultado.getString("idTipoPersonal"));
             } else {
@@ -125,5 +130,37 @@ cdb = ConectarServicio.getInstancia().getConexionDB();
         cdb.us_st.executeUpdate(cdb.un_sql);
     }
 
+     public CustomImageIcon DevolverFoto(String idDNI) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException
+    {
+       
+        
+        
+       Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+       CustomImageIcon ii = null;
+        InputStream is = null;
+        
+       try{
+           
+        cdb.un_sql = "SELECT foto FROM personal WHERE idPersonal = '" + idDNI + "'";
+        
+        cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
+           
+           if(cdb.resultado.next()){
+               is = cdb.resultado.getBinaryStream(1);
+               if(is != null)
+               {
+                   
+                   BufferedImage bi = ImageIO.read(is);
+                   ii = new CustomImageIcon(bi);
+               }
+               
+           }
+           
+           
+       }catch(SQLException ex){ex.printStackTrace();}
+       catch(IOException ex){ex.printStackTrace();}
+        
+        return ii;
+    }
 
 }

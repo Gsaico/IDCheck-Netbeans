@@ -6,12 +6,16 @@
 
 package IdCheck.UI;
 
+import IdCheck.NEGOCIOS.CustomImageIcon;
+import IdCheck.NEGOCIOS.Personal;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -62,10 +66,12 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         btnImprimir = new javax.swing.JButton();
         btnNew1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btnCargarIMG = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtDNI.setText("07523648");
         txtDNI.setToolTipText("");
         txtDNI.setName("txtDNI"); // NOI18N
         txtDNI.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +122,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 lblFotoMouseClicked(evt);
             }
         });
-        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 110, 160));
+        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 240, 340));
 
         btnInsertImage.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\devices\\camera.png")); // NOI18N
         btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +130,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnInsertImageActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInsertImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, -1, -1));
+        getContentPane().add(btnInsertImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
 
         btnSave.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\document-save-as.png")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +138,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         btnImprimir.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\fileprint.png")); // NOI18N
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +146,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
         btnNew1.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\add.png")); // NOI18N
         btnNew1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,10 +154,18 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnNew1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
+        getContentPane().add(btnNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
 
         jLabel7.setText("DNI");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, -1));
+
+        btnCargarIMG.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\filesystems\\gnome-fs-share.png")); // NOI18N
+        btnCargarIMG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarIMGActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCargarIMG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,6 +256,47 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNew1ActionPerformed
 
+    private void btnCargarIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarIMGActionPerformed
+    try {
+        // TODO add your handling code here:
+        CustomImageIcon foto;
+        Personal personal1 = new Personal();
+
+        personal1.setIdpersonal(txtDNI.getText());
+        personal1.leer();
+
+        txtNombres.setText(personal1.getNombres());
+        txtApellidos.setText(personal1.getApellidos());
+        txtFechaNac.setText(personal1.getFechanac());
+
+        
+        try {
+            foto = personal1.leerFoto(txtDNI.getText());
+             if (foto != null) {
+            lblFoto.setIcon(foto);
+        } else {
+            lblFoto.setIcon(new CustomImageIcon(getClass().getResource("/imagenes/camera.jpg")));
+        }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+               
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+
+        
+    }//GEN-LAST:event_btnCargarIMGActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,6 +333,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargarIMG;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnInsertImage;
     private javax.swing.JButton btnNew1;
