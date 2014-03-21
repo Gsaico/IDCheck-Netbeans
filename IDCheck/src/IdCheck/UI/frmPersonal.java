@@ -49,9 +49,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         txtDNI = new javax.swing.JTextField();
         txtNombres = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
-        txtFechaNac = new javax.swing.JTextField();
-        cmbCargo = new javax.swing.JComboBox();
-        cmbEmpresa = new javax.swing.JComboBox();
         cmdCondicionP = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -66,11 +63,13 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         btnImprimir = new javax.swing.JButton();
         btnNew1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        btnCargarIMG = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtFechaNac = new javax.swing.JFormattedTextField();
+        txtCargo = new javax.swing.JTextField();
+        txtEmpresa = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDNI.setText("07523648");
         txtDNI.setToolTipText("");
@@ -80,41 +79,40 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 txtDNIActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 110, -1));
-        getContentPane().add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 300, -1));
-        getContentPane().add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 300, -1));
-        getContentPane().add(txtFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 110, -1));
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDNIKeyPressed(evt);
+            }
+        });
 
-        cmbCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cmbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 300, -1));
+        txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombresKeyPressed(evt);
+            }
+        });
 
-        cmbEmpresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cmbEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 300, -1));
+        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidosKeyPressed(evt);
+            }
+        });
 
         cmdCondicionP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cmdCondicionP, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 300, -1));
 
-        jLabel1.setText("Condicion de la Persona:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jLabel1.setText("ACTIVAR PASE");
 
         jLabel8.setText("Empresa:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLabel6.setText("Cargo:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel5.setText("Fecha Nacimiento:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel4.setText("Apellidos:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel3.setText("Nombres:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 153, 204));
         jLabel2.setText("Ingrese DNI para modificar");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 180, -1));
 
         lblFoto.setBackground(new java.awt.Color(0, 0, 0));
         lblFoto.setText("Imagen");
@@ -123,7 +121,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 lblFotoMouseClicked(evt);
             }
         });
-        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 240, 340));
 
         btnInsertImage.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\devices\\camera.png")); // NOI18N
         btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +128,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnInsertImageActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInsertImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
 
         btnSave.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\document-save-as.png")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +135,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
 
         btnImprimir.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\fileprint.png")); // NOI18N
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +142,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
         btnNew1.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\add.png")); // NOI18N
         btnNew1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,18 +149,112 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
                 btnNew1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
 
         jLabel7.setText("DNI");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 30, -1));
 
-        btnCargarIMG.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\filesystems\\gnome-fs-share.png")); // NOI18N
-        btnCargarIMG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarIMGActionPerformed(evt);
+        jLabel9.setText("Condicion de la Persona:");
+
+        txtFechaNac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFechaNacKeyPressed(evt);
             }
         });
-        getContentPane().add(btnCargarIMG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
+
+        txtCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCargoKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel1))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(580, 580, 580)
+                .addComponent(btnInsertImage))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnSave)
+                .addGap(3, 3, 3)
+                .addComponent(btnNew1)
+                .addGap(3, 3, 3)
+                .addComponent(btnImprimir))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel4)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel5)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel6)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel8)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel9)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel2)))
+                        .addGap(6, 6, 6)
+                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(btnInsertImage)
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSave)
+                    .addComponent(btnNew1)
+                    .addComponent(btnImprimir)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -257,8 +345,12 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNew1ActionPerformed
 
-    private void btnCargarIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarIMGActionPerformed
-    try {
+    private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
+
+        
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+              try {
         // TODO add your handling code here:
         CustomImageIcon foto;
         Personal personal1 = new Personal();
@@ -269,7 +361,9 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         txtNombres.setText(personal1.getNombres());
         txtApellidos.setText(personal1.getApellidos());
         txtFechaNac.setText(personal1.getFechanac());
-
+        txtCargo.setText(personal1.getCargo());
+        txtEmpresa.setText(personal1.getIdempresacolaboradora());
+        cmdCondicionP.setToolTipText(personal1.getIdtipopersonal());
         
         try {
             foto = personal1.leerFoto(txtDNI.getText());
@@ -293,10 +387,51 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     } catch (SQLException ex) {
         Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
     }
-        
+      
+            
+            
+            
+            
+            
+            
+            this.txtNombres.requestFocus();
+            
+        }
 
-        
-    }//GEN-LAST:event_btnCargarIMGActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIKeyPressed
+
+    private void txtNombresKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombresKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+            this.txtApellidos.requestFocus();
+
+        }        
+    }//GEN-LAST:event_txtNombresKeyPressed
+
+    private void txtApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyPressed
+         if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+            this.txtFechaNac.requestFocus();
+
+        }   
+    }//GEN-LAST:event_txtApellidosKeyPressed
+
+    private void txtFechaNacKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaNacKeyPressed
+         if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+            this.txtCargo.requestFocus();
+
+        }   
+    }//GEN-LAST:event_txtFechaNacKeyPressed
+
+    private void txtCargoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCargoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+            this.txtEmpresa.requestFocus();
+
+        }   
+    }//GEN-LAST:event_txtCargoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -334,13 +469,10 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarIMG;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnInsertImage;
     private javax.swing.JButton btnNew1;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox cmbCargo;
-    private javax.swing.JComboBox cmbEmpresa;
     private javax.swing.JComboBox cmdCondicionP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -350,10 +482,13 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtFechaNac;
+    private javax.swing.JTextField txtEmpresa;
+    private javax.swing.JFormattedTextField txtFechaNac;
     private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables
 }
