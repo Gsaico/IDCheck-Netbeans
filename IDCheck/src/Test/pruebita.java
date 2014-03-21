@@ -9,6 +9,7 @@ package Test;
 import IdCheck.NEGOCIOS.Personal;
 import IdCheck.SERVICIOS.ConectarServicio;
 import IdCheck.SERVICIOS.Conexion;
+import IdCheck.UI.frmLogin;
 import IdCheck.UI.frmPersonal;
 import java.io.File;
 import java.io.FileInputStream;
@@ -79,7 +80,7 @@ catch(java.lang.InstantiationException e)
         }  
     
 
-frmPersonal personalform1= new frmPersonal();
+frmLogin personalform1= new frmLogin();
 personalform1.show();
  
 }

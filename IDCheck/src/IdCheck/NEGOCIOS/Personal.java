@@ -18,10 +18,13 @@ public class Personal {
    private String fechanac;
    private String cargo;
   private FileInputStream foto;
-  //private Blob foto;
+
    
    private String idempresacolaboradora;
    private String idtipopersonal;
+   
+   
+   
 
     public String getIdpersonal() {
         return idpersonal;

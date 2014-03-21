@@ -27,7 +27,7 @@ import static sun.awt.image.ImagingLib.filter;
  *
  * @author Pervac
  */
-public class frmPersonal extends javax.swing.JFrame {
+public class frmPersonal extends javax.swing.JInternalFrame {
 private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de Imagen", "jpg");
     private String Rutafoto;
     /**
