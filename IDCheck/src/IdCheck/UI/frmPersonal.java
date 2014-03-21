@@ -380,7 +380,11 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         txtFechaNac.setText(personal1.getFechanac());
         txtCargo.setText(personal1.getCargo());
         txtEmpresa.setText(personal1.getIdempresacolaboradora());
-        cmdCondicionP.setToolTipText(personal1.getIdtipopersonal());
+        int indice;
+        indice = Integer.parseInt(personal1.getIdtipopersonal())-1; 
+        
+       
+        cmdCondicionP.setSelectedIndex(indice);
         
         try {
             foto = personal1.leerFoto(txtDNI.getText());
