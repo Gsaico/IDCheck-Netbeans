@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -59,7 +60,11 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        txtIDUsuario.setText("09954108");
         getContentPane().add(txtIDUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 110, -1));
+
+        txtPassword.setText("09954108");
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, -1));
 
         jLabel1.setText("Usuario");
@@ -86,6 +91,7 @@ System.exit(0);        // TODO add your handling code here:
                 
                 
                   IDCheck Principal = new IDCheck();
+                  
                   Principal.setExtendedState(MAXIMIZED_BOTH);
                   
                   Principal.setVisible(true);
@@ -105,6 +111,8 @@ System.exit(0);        // TODO add your handling code here:
         } catch (IllegalAccessException ex) {
             Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         

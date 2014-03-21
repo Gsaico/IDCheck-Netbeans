@@ -68,7 +68,8 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         jLabel7 = new javax.swing.JLabel();
         btnCargarIMG = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDNI.setText("07523648");
