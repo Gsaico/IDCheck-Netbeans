@@ -8,11 +8,13 @@ package IdCheck.UI;
 
 import IdCheck.NEGOCIOS.CustomImageIcon;
 import IdCheck.NEGOCIOS.Personal;
+import IdCheck.NEGOCIOS.TipoPersonal;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,8 +35,23 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     /**
      * Creates new form frmPersonal
      */
-    public frmPersonal() {
+    public frmPersonal() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
+        
+        
+        cmdCondicionP.removeAllItems();
+        TipoPersonal tipopersonal1= new TipoPersonal();
+        
+        
+        ResultSet rstenmp;
+        
+        rstenmp =tipopersonal1.ListarTipoPersonal();
+        
+        
+            while (  rstenmp.next()) {
+                cmdCondicionP.addItem(rstenmp.getObject("NombreTipoPersonal"));
+            }
+        
     }
 
     /**
@@ -463,7 +480,17 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmPersonal().setVisible(true);
+                try {
+                    new frmPersonal().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
