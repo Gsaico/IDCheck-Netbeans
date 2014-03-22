@@ -7,6 +7,7 @@
 package IdCheck.UI;
 
 import IdCheck.NEGOCIOS.CustomImageIcon;
+import IdCheck.NEGOCIOS.EmpresaColaboradora;
 import IdCheck.NEGOCIOS.Personal;
 import IdCheck.NEGOCIOS.TipoPersonal;
 import java.awt.Image;
@@ -30,28 +31,18 @@ import static sun.awt.image.ImagingLib.filter;
  * @author Pervac
  */
 public class frmPersonal extends javax.swing.JInternalFrame {
-private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de Imagen", "jpg");
+
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de Imagen", "jpg");
     private String Rutafoto;
+
     /**
      * Creates new form frmPersonal
      */
     public frmPersonal() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
-        
-        
-        cmdCondicionP.removeAllItems();
-        TipoPersonal tipopersonal1= new TipoPersonal();
-        
-        
-        ResultSet rstenmp;
-        
-        rstenmp =tipopersonal1.ListarTipoPersonal();
-        
-        
-            while (  rstenmp.next()) {
-                cmdCondicionP.addItem(rstenmp.getObject("NombreTipoPersonal"));
-            }
-        
+
+       CargarComboTipoPersonal();
+       limpiarcontenedores();
     }
 
     /**
@@ -63,88 +54,34 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtDNI = new javax.swing.JTextField();
-        txtNombres = new javax.swing.JTextField();
-        txtApellidos = new javax.swing.JTextField();
-        cmdCondicionP = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblFoto = new javax.swing.JLabel();
-        btnInsertImage = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnNew1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtFechaNac = new javax.swing.JFormattedTextField();
-        txtCargo = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        txtRUC = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         txtEmpresa = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        cmdCondicionP = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCargo = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        txtFechaNac = new javax.swing.JFormattedTextField();
+        txtDNI = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
+        btnInsertImage = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        txtDNI.setText("07523648");
-        txtDNI.setToolTipText("");
-        txtDNI.setName("txtDNI"); // NOI18N
-        txtDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDNIActionPerformed(evt);
-            }
-        });
-        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDNIKeyPressed(evt);
-            }
-        });
-
-        txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombresKeyPressed(evt);
-            }
-        });
-
-        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtApellidosKeyPressed(evt);
-            }
-        });
-
-        cmdCondicionP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel1.setText("ACTIVAR PASE");
-
-        jLabel8.setText("Empresa:");
-
-        jLabel6.setText("Cargo:");
-
-        jLabel5.setText("Fecha Nacimiento:");
-
-        jLabel4.setText("Apellidos:");
-
-        jLabel3.setText("Nombres:");
-
-        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel2.setText("Ingrese DNI para modificar");
-
-        lblFoto.setBackground(new java.awt.Color(0, 0, 0));
-        lblFoto.setText("Imagen");
-        lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblFotoMouseClicked(evt);
-            }
-        });
-
-        btnInsertImage.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\devices\\camera.png")); // NOI18N
-        btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertImageActionPerformed(evt);
-            }
-        });
 
         btnSave.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\actions\\document-save-as.png")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -167,19 +104,198 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la Empresa ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel1.setToolTipText("mkkk");
+
+        txtRUC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRUCKeyPressed(evt);
+            }
+        });
+
+        jLabel8.setText("Empresa:");
+
+        jLabel10.setText("RUC");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Condicion del Personal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        cmdCondicionP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel9.setText("Tipo de Personal:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Personal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
         jLabel7.setText("DNI");
 
-        jLabel9.setText("Condicion de la Persona:");
+        jLabel3.setText("Nombres:");
 
+        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel2.setText("Ingrese DNI para modificar");
+
+        txtCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCargoKeyPressed(evt);
+            }
+        });
+
+        txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombresKeyPressed(evt);
+            }
+        });
+
+        txtFechaNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-d"))));
         txtFechaNac.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFechaNacKeyPressed(evt);
             }
         });
 
-        txtCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDNI.setText("07523648");
+        txtDNI.setToolTipText("");
+        txtDNI.setName("txtDNI"); // NOI18N
+        txtDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIActionPerformed(evt);
+            }
+        });
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCargoKeyPressed(evt);
+                txtDNIKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setText("Apellidos:");
+
+        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidosKeyPressed(evt);
+            }
+        });
+
+        jLabel5.setText("Fecha Nacimiento:");
+
+        jLabel6.setText("Cargo:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombres)
+                    .addComponent(txtCargo)
+                    .addComponent(txtApellidos)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 34, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblFoto.setBackground(new java.awt.Color(0, 0, 0));
+        lblFoto.setText("Foto");
+        lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFotoMouseClicked(evt);
+            }
+        });
+
+        btnInsertImage.setIcon(new javax.swing.ImageIcon("D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\IDCheck\\Iconos\\24x24\\devices\\camera.png")); // NOI18N
+        btnInsertImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertImageActionPerformed(evt);
             }
         });
 
@@ -188,89 +304,47 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel1))
-                .addGap(12, 12, 12)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNew1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnImprimir)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(580, 580, 580)
-                .addComponent(btnInsertImage))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(btnSave)
-                .addGap(3, 3, 3)
-                .addComponent(btnNew1)
-                .addGap(3, 3, 3)
-                .addComponent(btnImprimir))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnInsertImage)
+                        .addGap(160, 160, 160))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel4)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel5)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel6)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel8)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel9)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2)))
-                        .addGap(6, 6, 6)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(cmdCondicionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(btnInsertImage)
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSave)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnImprimir)
                     .addComponent(btnNew1)
-                    .addComponent(btnImprimir)))
+                    .addComponent(btnSave)
+                    .addComponent(btnInsertImage))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -285,138 +359,218 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     }//GEN-LAST:event_lblFotoMouseClicked
 
     private void btnInsertImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertImageActionPerformed
-    //creamos un objeto de JFILECHOOSER para que se abra una ventada de exploracion de archivos
-       // JFileChooser dlg = new JFileChooser();
-        //del objeto creado llamados al metodo setFileFilter para que solo busque archivos con extension .jpg
-        //dlg.setFileFilter(filter);
-        //Abre la ventana de dialogo
-      //  int option = dlg.showOpenDialog(this);
-        //Si hace click en el boton abrir del dialogo
-       // if (option == JFileChooser.APPROVE_OPTION) {
-            //Obtiene nombre del archivo seleccionado
-            
-          //  String fil = dlg.getSelectedFile().getPath();
-            //se obtiene la direccion donde se guardara la imagen
-          //  String file = dlg.getSelectedFile().toString();
-          //  lblFoto.setIcon(new ImageIcon(fil));
-            //Modificando la imagen
-          //  ImageIcon icon = new ImageIcon(fil);
-            //Se extrae la imagen del icono
-          //  Image img = icon.getImage();
-            //Se modifica su tamaño
-           // Image newimg = img.getScaledInstance(155, 175, java.awt.Image.SCALE_SMOOTH);
-            //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
-          //  ImageIcon newIcon = new ImageIcon(newimg);
-            //Se coloca el nuevo icono modificado
-          //  lblFoto.setIcon(newIcon);
-            //Se cambia el tamaño de la etiqueta
-          //  lblFoto.setSize(155, 175);
-            //TXTRUTAFOTO.setText(fil);
-            
-            
+   
+        
+        Rutafoto = "";
+        
         String fils = null;
-            
+
         JFileChooser se = new JFileChooser();
-        se.setFileSelectionMode(JFileChooser.FILES_ONLY);       
+        se.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int estado = se.showOpenDialog(null);
-        if(estado == JFileChooser.APPROVE_OPTION)
-        {
+        if (estado == JFileChooser.APPROVE_OPTION) {
             try {
-                 
-               FileInputStream fis =  new FileInputStream(se.getSelectedFile());
-                int longitudBytes = (int)se.getSelectedFile().length();
-                
+
+                FileInputStream fis = new FileInputStream(se.getSelectedFile());
+                int longitudBytes = (int) se.getSelectedFile().length();
+
                 fils = se.getSelectedFile().getPath();
-                
+
                 Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT);
                 lblFoto.setIcon(new ImageIcon(icono));
-                lblFoto.updateUI(); 
+                lblFoto.updateUI();
               //  lblFoto.setIcon(new ImageIcon(fil));
-                
-            } catch (FileNotFoundException ex) {ex.printStackTrace();}
-            catch (IOException ex){ex.printStackTrace();}
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-            
-            
-            
-            
-            Rutafoto =  fils;
-            
+
+        Rutafoto = fils;
+
 //seletamos la variable local con la ruta de la imagen
-
-
 
     }//GEN-LAST:event_btnInsertImageActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+
+        Personal personal1 = new Personal();
        
-             
+        personal1.setIdpersonal(txtDNI.getText());
+        personal1.setNombres(txtNombres.getText());
+        personal1.setApellidos(txtApellidos.getText());
+        personal1.setFechanac(txtFechaNac.getText());
+       
         
+        //permite cargar una imagen
+        
+        try{
+            if (Rutafoto!=""){
+            FileInputStream fis = null;
+
+            File file = new File(Rutafoto);
+            fis = new FileInputStream(file);
+        
+            personal1.setFoto(fis);
+            }else
+            {
+            personal1.setFoto(null);
+            }
+            
+        } catch (Exception e) {
+          // JOptionPane.showMessageDialog( this."Ocurrio un error en la  RUTA: " + e );
+        }
+
+        
+        personal1.setCargo(txtCargo.getText());
+        
+        //*5569455
+        personal1.setIdempresacolaboradora(txtRUC.getText());
+        
+        
+         
+        personal1.setIdtipopersonal(String.valueOf(cmdCondicionP.getSelectedIndex()+1));
+        try {
+            
+            personal1.grabar();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        
+        
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnImprimirActionPerformed
 
+    
+    private void limpiarcontenedores() {
+        
+        txtDNI.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtFechaNac.setText("");
+        txtCargo.setText("");
+        txtRUC.setText("");
+        txtEmpresa.setText("");
+        cmdCondicionP.setSelectedIndex(2);
+    }
+    
+    private void CargarComboTipoPersonal() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        cmdCondicionP.removeAllItems();
+        TipoPersonal tipopersonal1 = new TipoPersonal();
+
+        ResultSet rstenmp;
+
+        rstenmp = tipopersonal1.ListarTipoPersonal();
+
+        while (rstenmp.next()) {
+            cmdCondicionP.addItem(rstenmp.getObject("NombreTipoPersonal"));
+        }
+
+    }
+    
     private void btnNew1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNew1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            CargarComboTipoPersonal();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       limpiarcontenedores();
+       
+
     }//GEN-LAST:event_btnNew1ActionPerformed
 
     private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
 
-        
         if (evt.getKeyCode() == evt.VK_ENTER) {
             //evento que se da solo cuando se presiona enter.
-              try {
-        // TODO add your handling code here:
-        CustomImageIcon foto;
-        Personal personal1 = new Personal();
+            try {
+                // TODO add your handling code here:
+                CustomImageIcon foto;
+                Personal personal1 = new Personal();
 
-        personal1.setIdpersonal(txtDNI.getText());
-        personal1.leer();
+                personal1.setIdpersonal(txtDNI.getText());
+                personal1.leer();
 
-        txtNombres.setText(personal1.getNombres());
-        txtApellidos.setText(personal1.getApellidos());
-        txtFechaNac.setText(personal1.getFechanac());
-        txtCargo.setText(personal1.getCargo());
-        txtEmpresa.setText(personal1.getIdempresacolaboradora());
-        int indice;
-        indice = Integer.parseInt(personal1.getIdtipopersonal())-1; 
-        
-       
-        cmdCondicionP.setSelectedIndex(indice);
-        
-        try {
-            foto = personal1.leerFoto(txtDNI.getText());
-             if (foto != null) {
-            lblFoto.setIcon(foto);
-        } else {
-            lblFoto.setIcon(new CustomImageIcon(getClass().getResource("/imagenes/camera.jpg")));
-        }
-            
-        } catch (IOException ex) {
-            Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+                if(personal1.getNombres()!=null){
+                 txtNombres.setText(personal1.getNombres());
+                }
+                if(personal1.getApellidos()!=null){
+                txtApellidos.setText(personal1.getApellidos());
+                }
+                if(personal1.getFechanac()!=null){
+                txtFechaNac.setText(personal1.getFechanac());
+                }
+                if(personal1.getCargo()!=null){
+                 txtCargo.setText(personal1.getCargo());
+                }
+                if(personal1.getIdempresacolaboradora()!=null){
+                txtRUC.setText(personal1.getIdempresacolaboradora());
+                }
+                if(personal1.getIdtipopersonal()!=null){
+                cmdCondicionP.setSelectedIndex(Integer.parseInt(personal1.getIdtipopersonal()) - 1);
+                }
                
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SQLException ex) {
-        Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
-    }
-      
-            
-            
-            
-            
-            
-            
+             
+                if(txtRUC.getText()!=""){
+                 EmpresaColaboradora  ec= new EmpresaColaboradora();
+                                
+                 ec.setIdEmpresaColaboradora(txtRUC.getText());
+                 ec.ListarEmpresaXID();
+                 
+                 
+                 if(ec.getNombreEmpresa()!=null){
+                 txtEmpresa.setText(ec.getNombreEmpresa());
+                 }
+                 
+                 
+                 
+                }
+               
+                
+                try {
+                    foto = personal1.leerFoto(txtDNI.getText());
+                    if (foto != null) {
+                        lblFoto.setIcon(foto);
+                    } else {
+                        lblFoto.setIcon(new CustomImageIcon(getClass().getResource("/imagenes/camera.jpg")));
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             this.txtNombres.requestFocus();
-            
+
         }
 
 // TODO add your handling code here:
@@ -427,32 +581,67 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
             //evento que se da solo cuando se presiona enter.
             this.txtApellidos.requestFocus();
 
-        }        
+        }
     }//GEN-LAST:event_txtNombresKeyPressed
 
     private void txtApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyPressed
-         if (evt.getKeyCode() == evt.VK_ENTER) {
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             //evento que se da solo cuando se presiona enter.
             this.txtFechaNac.requestFocus();
 
-        }   
+        }
     }//GEN-LAST:event_txtApellidosKeyPressed
 
     private void txtFechaNacKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaNacKeyPressed
-         if (evt.getKeyCode() == evt.VK_ENTER) {
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             //evento que se da solo cuando se presiona enter.
             this.txtCargo.requestFocus();
 
-        }   
+        }
     }//GEN-LAST:event_txtFechaNacKeyPressed
 
     private void txtCargoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCargoKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             //evento que se da solo cuando se presiona enter.
-            this.txtEmpresa.requestFocus();
+            this.txtRUC.requestFocus();
 
-        }   
+        }
     }//GEN-LAST:event_txtCargoKeyPressed
+
+    private void txtRUCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRUCKeyPressed
+
+         if (evt.getKeyCode() == evt.VK_ENTER) {
+            //evento que se da solo cuando se presiona enter.
+            if(txtRUC.getText()!=""){
+                 EmpresaColaboradora  ec= new EmpresaColaboradora();
+                 ec.setIdEmpresaColaboradora(txtRUC.getText());
+                 
+                try {
+                    ec.ListarEmpresaXID();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                 txtEmpresa.setText(ec.getNombreEmpresa());
+                 
+                }
+             
+             
+             this.txtEmpresa.requestFocus();
+
+        }
+
+        
+
+        
+        
+    }//GEN-LAST:event_txtRUCKeyPressed
 
     /**
      * @param args the command line arguments
@@ -505,7 +694,7 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     private javax.swing.JButton btnNew1;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cmdCondicionP;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,6 +703,9 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCargo;
@@ -521,6 +713,6 @@ private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JFormattedTextField txtFechaNac;
     private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtRUC;
     // End of variables declaration//GEN-END:variables
 }
-

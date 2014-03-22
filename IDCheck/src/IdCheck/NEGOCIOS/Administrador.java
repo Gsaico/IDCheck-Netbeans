@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class Administrador {
     
-     private String idpersonal; 
-   private String Pasword;
+    private String idpersonal; 
+    private String Pasword;
 
     public String getIdpersonal() {
         return idpersonal;

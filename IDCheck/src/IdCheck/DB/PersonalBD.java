@@ -38,7 +38,8 @@ public class PersonalBD {
 
         if (cdb.resultado != null) {
             if (cdb.resultado.next()) {
-cdb = ConectarServicio.getInstancia().getConexionDB();
+               
+                if (p.getFoto() != null) {
                 cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
                         + "Nombres= ? , "
                         + "Apellidos= ? ,"
@@ -53,40 +54,72 @@ cdb = ConectarServicio.getInstancia().getConexionDB();
                 cdb.ps.setString(2, p.getApellidos());
                 cdb.ps.setString(3, p.getFechanac());
                 cdb.ps.setString(4, p.getCargo());
-             if (p.getFoto() != null) {
-                    cdb.ps.setBinaryStream(5, p.getFoto());
-                }
+                cdb.ps.setBinaryStream(5, p.getFoto());
                 cdb.ps.setString(6, p.getIdempresacolaboradora());
                 cdb.ps.setString(7, p.getIdtipopersonal());
                 cdb.ps.setString(8, p.getIdpersonal());
-
-               
-               cdb.ps.executeUpdate();
-               
-
-                //cdb.un_sql = "UPDATE personal SET  Nombres='" + p.getNombres()
-                //        + "', Apellidos='" + p.getApellidos() + "', FechaNac='" + p.getFechanac() + "',  Cargo='" + p.getCargo()
-                //        + "', Foto="+ p.getFoto()  +", idEmpresaColaboradora='" + p.getIdempresacolaboradora()
-                //       + "', idTipoPersonal='" + p.getIdtipopersonal() + "' WHERE idPersonal='" + p.getIdpersonal() + "'";
-                // cdb.us_st.executeUpdate(cdb.un_sql);
+                cdb.ps.executeUpdate();
                 
-            } else {
-                cdb.un_sql = "INSERT INTO personal VALUES(  '" + p.getIdpersonal() + "', '" + p.getNombres()
-                        + "', '" + p.getApellidos() + "','" + p.getFechanac() + "'," + p.getCargo()
-                        + "," + p.getFoto() + "," + p.getIdempresacolaboradora()
-                        + "," + p.getIdtipopersonal() + ")";
+                }else{
+                cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
+                        + "Nombres= ? , "
+                        + "Apellidos= ? ,"
+                        + "FechaNac= ? ,"
+                        + "Cargo= ? ,"
+                        + "idEmpresaColaboradora= ? ,"
+                        + "idTipoPersonal= ? "
+                        + "WHERE idPersonal= ? ");
 
-                cdb.us_st.executeUpdate(cdb.un_sql);
+                cdb.ps.setString(1, p.getNombres());
+                cdb.ps.setString(2, p.getApellidos());
+                cdb.ps.setString(3, p.getFechanac());
+                cdb.ps.setString(4, p.getCargo());
+            ;
+                cdb.ps.setString(5, p.getIdempresacolaboradora());
+                cdb.ps.setString(6, p.getIdtipopersonal());
+                cdb.ps.setString(7, p.getIdpersonal());
+                cdb.ps.executeUpdate();
+                
+                }
+                
+                
+                
+
+            } else {
+                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?,?,?)");
+
+                cdb.ps.setString(1, p.getIdpersonal());
+                cdb.ps.setString(2, p.getNombres());
+                cdb.ps.setString(3, p.getApellidos());
+                cdb.ps.setString(4, p.getFechanac());
+
+                if (p.getFoto() != null) {
+                    cdb.ps.setBinaryStream(5, p.getFoto());
+                }
+                cdb.ps.setString(6, p.getCargo());
+                cdb.ps.setString(7, p.getIdempresacolaboradora());
+                cdb.ps.setString(8, p.getIdtipopersonal());
+
+                cdb.ps.executeUpdate();
 
             }
 
         } else {
-            cdb.un_sql = "INSERT INTO personal VALUES(  '" + p.getIdpersonal() + "', '" + p.getNombres()
-                    + "', '" + p.getApellidos() + "'," + p.getFechanac() + "," + p.getCargo()
-                    + "," + p.getFoto() + "," + p.getIdempresacolaboradora()
-                    + "," + p.getIdtipopersonal() + ")";
+            cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?,?,?)");
 
-            cdb.us_st.executeUpdate(cdb.un_sql);
+            cdb.ps.setString(1, p.getIdpersonal());
+            cdb.ps.setString(2, p.getNombres());
+            cdb.ps.setString(3, p.getApellidos());
+            cdb.ps.setString(4, p.getFechanac());
+
+            if (p.getFoto() != null) {
+                cdb.ps.setBinaryStream(5, p.getFoto());
+            }
+            cdb.ps.setString(6, p.getCargo());
+            cdb.ps.setString(7, p.getIdempresacolaboradora());
+            cdb.ps.setString(8, p.getIdtipopersonal());
+
+            cdb.ps.executeUpdate();
         }
 
     }
@@ -110,12 +143,9 @@ cdb = ConectarServicio.getInstancia().getConexionDB();
                 //p.setFoto(cdb.resultado.getBinaryStream("Foto"));
                 p.setIdempresacolaboradora(cdb.resultado.getString("idEmpresaColaboradora"));
                 p.setIdtipopersonal(cdb.resultado.getString("idTipoPersonal"));
-            } else {
-                throw new Error("Registro: " + p.getIdpersonal() + "No se encuentra en la tabla personal" + this.getClass().getName());
-            }
-        } else {
-            throw new Error("Consulta en Registro: " + p.getIdpersonal() + "Ha devuelto un resordset null ubicación" + this.getClass().getName());
-        }
+            } 
+        } 
+        
         return p;
 
     }
