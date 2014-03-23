@@ -1,13 +1,9 @@
-
-
 package IdCheck.SERVICIOS;
 
 /**
  *
  * @author Pervac
  */
-
-
 public class ConectarServicio {
 
     private Conexion cbd;
@@ -26,9 +22,9 @@ public class ConectarServicio {
 
     }
 
-    public Conexion getConexionDB() throws ClassNotFoundException, 
-                                           InstantiationException, 
-                                           IllegalAccessException {
+    public Conexion getConexionDB() throws ClassNotFoundException,
+            InstantiationException,
+            IllegalAccessException {
 
         if (cbd == null) {
             String nombreClase = System.getProperty("databaseclass");
@@ -38,7 +34,5 @@ public class ConectarServicio {
         return cbd;
 
     }
-    
-    
-    
+
 }

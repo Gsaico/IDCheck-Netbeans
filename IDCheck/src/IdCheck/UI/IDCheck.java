@@ -6,6 +6,7 @@
 
 package IdCheck.UI;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -94,15 +95,24 @@ public class IDCheck extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openMenuItemColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemColaboradorActionPerformed
-
-    this.escritorio.removeAll();
-    this.escritorio.repaint();
-    frmPersonal hijoform= new frmPersonal();
-    escritorio.add(hijoform);
-    hijoform.show();
-    
-    
+        try {
+            this.escritorio.removeAll();
+            this.escritorio.repaint();
+            frmPersonal hijoform= new frmPersonal();
+            escritorio.add(hijoform);
+            hijoform.show();
+            
+            
 // TODO add your handling code here:
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_openMenuItemColaboradorActionPerformed
 
     private void jMenuItemBuscaColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscaColaboradorActionPerformed

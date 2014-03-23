@@ -10,6 +10,10 @@ import IdCheck.NEGOCIOS.CustomImageIcon;
 import IdCheck.NEGOCIOS.EmpresaColaboradora;
 import IdCheck.NEGOCIOS.Personal;
 import IdCheck.NEGOCIOS.TipoPersonal;
+import IdCheck.SERVICIOS.ConectarServicio;
+import IdCheck.SERVICIOS.Conexion;
+import IdCheck.SERVICIOS.ConexionDB;
+import com.mysql.jdbc.Connection;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -24,6 +30,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+
+
 import static sun.awt.image.ImagingLib.filter;
 
 /**
@@ -37,6 +52,10 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmPersonal
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.lang.InstantiationException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.sql.SQLException
      */
     public frmPersonal() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
@@ -452,7 +471,41 @@ public class frmPersonal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+        try {
+              Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+            
+            //String rutainforme="D:\\1 - INGENIERIAS\\trabajo final control de acceso po codigo de barras\\Repositorios ID check\\IDCheck Netbeans\\rptFotocheck.jasper";
+            
+            
+            
+//        if(miConexion!=null)
+//        {
+//            JOptionPane.showMessageDialog(null, "Conexión Realizada Correctamente");
+//        }
+            // "\\src\\Reportes\\rptFotocheck.jasper"
+            
+            String rutainforme=System.getProperty("user.dir") + "\\src\\Reportes\\rptFotocheck.jasper";
+            System.out.println(rutainforme);
+            
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(rutainforme);
+            
+            Map parametros = new HashMap();
+            parametros.put("DNI",txtDNI.getText());
+            
+            JasperPrint informe = JasperFillManager.fillReport(reporte, parametros, cdb.conexion);
+            JasperViewer ventanavisor = new JasperViewer(informe,false);
+            ventanavisor.setTitle("Fotocheck");
+            ventanavisor.setVisible(true);
+            
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(this,ex.getMessage());
+           
+        }
+            
+        
+       
+         
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     
@@ -494,7 +547,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
-       limpiarcontenedores();
+            limpiarcontenedores();
        
 
     }//GEN-LAST:event_btnNew1ActionPerformed

@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/DB/TipoPersonalBD.java</file>
-            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/DB/AdministradorBD.java</file>
             <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/SERVICIOS/Conexion.java</file>
             <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/UI/frmPersonal.java</file>
-            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/DB/PersonalBD.java</file>
-            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/NEGOCIOS/Administrador.java</file>
-            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/NEGOCIOS/TipoPersonal.java</file>
+            <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/IdCheck/SERVICIOS/ConexionDB.java</file>
             <file>file:/D:/1%20-%20INGENIERIAS/trabajo%20final%20control%20de%20acceso%20po%20codigo%20de%20barras/Repositorios%20ID%20check/IDCheck%20Netbeans/IDCheck/src/Test/pruebita.java</file>
         </group>
     </open-files>

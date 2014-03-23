@@ -45,6 +45,8 @@ public class frmActivarPase extends javax.swing.JInternalFrame {
         txtCargo = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
 
+        setClosable(true);
+
         txtDNI.setText("07523648");
         txtDNI.setToolTipText("");
         txtDNI.setName("txtDNI"); // NOI18N

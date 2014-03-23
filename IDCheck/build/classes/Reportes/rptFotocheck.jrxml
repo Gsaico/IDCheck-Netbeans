@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptFotocheck" language="groovy" pageWidth="155" pageHeight="240" columnWidth="155" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cd86435e-c050-4d82-9b56-fbd5d2d8e752">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DNI" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     personal.`Nombres` AS personal_Nombres,
+     personal.`Apellidos` AS personal_Apellidos,
+     personal.`Foto` AS personal_Foto,
+     personal.`idPersonal` AS personal_idPersonal
+FROM
+     `personal` personal
+
+WHERE personal.`idPersonal`=$P{DNI}]]>
+	</queryString>
+	<field name="personal_Nombres" class="java.lang.String"/>
+	<field name="personal_Apellidos" class="java.lang.String"/>
+	<field name="personal_Foto" class="java.io.InputStream"/>
+	<field name="personal_idPersonal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="240" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="156" width="155" height="20" uuid="3a129368-7e1c-4327-b68f-1542085a420c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personal_Apellidos}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="RelativeToBandHeight" x="29" y="11" width="99" height="132" uuid="8a89d0b1-ab04-4fc8-91c9-75f0f34f8427"/>
+				<imageExpression><![CDATA[$F{personal_Foto}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="176" width="155" height="20" uuid="758b76a1-9856-45b9-9de9-d1773ed75f83"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personal_Nombres}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="10" y="206" width="134" height="34" uuid="531222dd-09a0-45c5-8b0a-f7c3e74e3b6d"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39 (Extended)" drawText="true" checksumRequired="true">
+					<jr:codeExpression><![CDATA[$F{personal_idPersonal}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
