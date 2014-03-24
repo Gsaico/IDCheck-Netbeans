@@ -19,8 +19,7 @@ public class ControladorPersonal {
         p.setFechanac(fechanac);
         p.setCargo(cargo);
       
-        p.setIdempresacolaboradora(idempresacolaboradora);
-        p.setIdtipopersonal(idtipopersonal);
+       
 
         p.grabar();
     }

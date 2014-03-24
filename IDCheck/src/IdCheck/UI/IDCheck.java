@@ -47,6 +47,7 @@ public class IDCheck extends javax.swing.JFrame {
         jMenuItemBuscaColaborador = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1AutorizarAcceso = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +76,16 @@ public class IDCheck extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        jMenu2.setText("Activar Pase");
+        jMenu2.setText("Acceso");
+
+        jMenuItem1AutorizarAcceso.setText("Autorizar Acceso");
+        jMenuItem1AutorizarAcceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1AutorizarAccesoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1AutorizarAcceso);
+
         menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
@@ -124,6 +134,26 @@ public class IDCheck extends javax.swing.JFrame {
     hijoform.show();        
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemBuscaColaboradorActionPerformed
+
+    private void jMenuItem1AutorizarAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1AutorizarAccesoActionPerformed
+        try {
+            this.escritorio.removeAll();
+            this.escritorio.repaint();
+            frmActivarPase hijoform= new frmActivarPase();
+            escritorio.add(hijoform);
+            hijoform.show();   
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(IDCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+    }//GEN-LAST:event_jMenuItem1AutorizarAccesoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +205,7 @@ public class IDCheck extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1AutorizarAcceso;
     private javax.swing.JMenuItem jMenuItemBuscaColaborador;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItemColaborador;

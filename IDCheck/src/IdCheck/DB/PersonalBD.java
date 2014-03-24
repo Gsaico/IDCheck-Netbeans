@@ -38,55 +38,45 @@ public class PersonalBD {
 
         if (cdb.resultado != null) {
             if (cdb.resultado.next()) {
-               
+
                 if (p.getFoto() != null) {
-                cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
-                        + "Nombres= ? , "
-                        + "Apellidos= ? ,"
-                        + "FechaNac= ? ,"
-                        + "Cargo= ? ,"
-                        + "Foto= ? ,"
-                        + "idEmpresaColaboradora= ? ,"
-                        + "idTipoPersonal= ? "
-                        + "WHERE idPersonal= ? ");
+                    cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
+                            + "Nombres= ? , "
+                            + "Apellidos= ? ,"
+                            + "FechaNac= ? ,"
+                            + "Cargo= ? ,"
+                            + "Foto= ? "
+                            + "WHERE idPersonal= ? ");
 
-                cdb.ps.setString(1, p.getNombres());
-                cdb.ps.setString(2, p.getApellidos());
-                cdb.ps.setString(3, p.getFechanac());
-                cdb.ps.setString(4, p.getCargo());
-                cdb.ps.setBinaryStream(5, p.getFoto());
-                cdb.ps.setString(6, p.getIdempresacolaboradora());
-                cdb.ps.setString(7, p.getIdtipopersonal());
-                cdb.ps.setString(8, p.getIdpersonal());
-                cdb.ps.executeUpdate();
-                
-                }else{
-                cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
-                        + "Nombres= ? , "
-                        + "Apellidos= ? ,"
-                        + "FechaNac= ? ,"
-                        + "Cargo= ? ,"
-                        + "idEmpresaColaboradora= ? ,"
-                        + "idTipoPersonal= ? "
-                        + "WHERE idPersonal= ? ");
+                    cdb.ps.setString(1, p.getNombres());
+                    cdb.ps.setString(2, p.getApellidos());
+                    cdb.ps.setString(3, p.getFechanac());
+                    cdb.ps.setString(4, p.getCargo());
+                    cdb.ps.setBinaryStream(5, p.getFoto());
+                    cdb.ps.setString(6, p.getIdpersonal());
+                    cdb.ps.executeUpdate();
 
-                cdb.ps.setString(1, p.getNombres());
-                cdb.ps.setString(2, p.getApellidos());
-                cdb.ps.setString(3, p.getFechanac());
-                cdb.ps.setString(4, p.getCargo());
-            ;
-                cdb.ps.setString(5, p.getIdempresacolaboradora());
-                cdb.ps.setString(6, p.getIdtipopersonal());
-                cdb.ps.setString(7, p.getIdpersonal());
-                cdb.ps.executeUpdate();
-                
+                } else {
+                    cdb.ps = cdb.conexion.prepareStatement("UPDATE personal SET "
+                            + "Nombres= ? , "
+                            + "Apellidos= ? ,"
+                            + "FechaNac= ? ,"
+                            + "Cargo= ? "
+                            + "WHERE idPersonal= ? ");
+
+                    cdb.ps.setString(1, p.getNombres());
+                    cdb.ps.setString(2, p.getApellidos());
+                    cdb.ps.setString(3, p.getFechanac());
+                    cdb.ps.setString(4, p.getCargo());
+                    ;
+
+                    cdb.ps.setString(5, p.getIdpersonal());
+                    cdb.ps.executeUpdate();
+
                 }
-                
-                
-                
 
             } else {
-                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?,?,?)");
+                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?)");
 
                 cdb.ps.setString(1, p.getIdpersonal());
                 cdb.ps.setString(2, p.getNombres());
@@ -97,15 +87,13 @@ public class PersonalBD {
                     cdb.ps.setBinaryStream(5, p.getFoto());
                 }
                 cdb.ps.setString(6, p.getCargo());
-                cdb.ps.setString(7, p.getIdempresacolaboradora());
-                cdb.ps.setString(8, p.getIdtipopersonal());
 
                 cdb.ps.executeUpdate();
 
             }
 
         } else {
-            cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?,?,?)");
+            cdb.ps = cdb.conexion.prepareStatement("INSERT INTO personal VALUES(?,?,?,?,?,?)");
 
             cdb.ps.setString(1, p.getIdpersonal());
             cdb.ps.setString(2, p.getNombres());
@@ -116,8 +104,6 @@ public class PersonalBD {
                 cdb.ps.setBinaryStream(5, p.getFoto());
             }
             cdb.ps.setString(6, p.getCargo());
-            cdb.ps.setString(7, p.getIdempresacolaboradora());
-            cdb.ps.setString(8, p.getIdtipopersonal());
 
             cdb.ps.executeUpdate();
         }
@@ -141,11 +127,10 @@ public class PersonalBD {
                 p.setFechanac(cdb.resultado.getString("FechaNac"));
                 p.setCargo(cdb.resultado.getString("Cargo"));
                 //p.setFoto(cdb.resultado.getBinaryStream("Foto"));
-                p.setIdempresacolaboradora(cdb.resultado.getString("idEmpresaColaboradora"));
-                p.setIdtipopersonal(cdb.resultado.getString("idTipoPersonal"));
-            } 
-        } 
-        
+
+            }
+        }
+
         return p;
 
     }
@@ -160,36 +145,34 @@ public class PersonalBD {
         cdb.us_st.executeUpdate(cdb.un_sql);
     }
 
-     public CustomImageIcon DevolverFoto(String idDNI) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException
-    {
-       
-        
-        
-       Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
-       CustomImageIcon ii = null;
+    public CustomImageIcon DevolverFoto(String idDNI) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+        Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+        CustomImageIcon ii = null;
         InputStream is = null;
-        
-       try{
-           
-        cdb.un_sql = "SELECT foto FROM personal WHERE idPersonal = '" + idDNI + "'";
-        
-        cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
-           
-           if(cdb.resultado.next()){
-               is = cdb.resultado.getBinaryStream(1);
-               if(is != null)
-               {
-                   
-                   BufferedImage bi = ImageIO.read(is);
-                   ii = new CustomImageIcon(bi);
-               }
-               
-           }
-           
-           
-       }catch(SQLException ex){ex.printStackTrace();}
-       catch(IOException ex){ex.printStackTrace();}
-        
+
+        try {
+
+            cdb.un_sql = "SELECT foto FROM personal WHERE idPersonal = '" + idDNI + "'";
+
+            cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
+
+            if (cdb.resultado.next()) {
+                is = cdb.resultado.getBinaryStream(1);
+                if (is != null) {
+
+                    BufferedImage bi = ImageIO.read(is);
+                    ii = new CustomImageIcon(bi);
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         return ii;
     }
 

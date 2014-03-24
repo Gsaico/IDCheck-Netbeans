@@ -19,11 +19,7 @@ public class Personal {
    private String cargo;
   private FileInputStream foto;
 
-   
-   private String idempresacolaboradora;
-   private String idtipopersonal;
-   
-   
+
    
 
     public String getIdpersonal() {
@@ -74,25 +70,7 @@ public class Personal {
         this.foto = foto;
     }
 
-    public String getIdempresacolaboradora() {
-        return idempresacolaboradora;
-    }
 
-    public void setIdempresacolaboradora(String idempresacolaboradora) {
-        this.idempresacolaboradora = idempresacolaboradora;
-    }
-
-    public String getIdtipopersonal() {
-        return idtipopersonal;
-    }
-
-    public void setIdtipopersonal(String idtipopersonal) {
-        this.idtipopersonal = idtipopersonal;
-    }
-
-   
-
-   
    
    public void grabar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException
    {
