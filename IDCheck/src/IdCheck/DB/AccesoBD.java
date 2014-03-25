@@ -29,8 +29,7 @@ public class AccesoBD {
 
               
                 cdb.ps = cdb.conexion.prepareStatement("UPDATE acceso SET "
-                        + "idAcceso= ?, "
-                        + "idPersonal= ?, "
+
                         + "Fecha= ?, "
                         + "FechaDesde= ?, "
                         + "FechaHasta= ?, "
@@ -45,79 +44,78 @@ public class AccesoBD {
                         + "idEmpresaColaboradora= ?, "
                         + "idTipoPersonal= ?");
 
-                cdb.ps.setInt(1, clsA.getIdacceso());
+               
                 
-                cdb.ps.setString(2, clsA.getIdpersonal());
-                cdb.ps.setString(3, clsA.getFecha());
-                cdb.ps.setString(4, clsA.getFechadesde());
-                cdb.ps.setString(5, clsA.getFechahasta());
-                cdb.ps.setString(6, clsA.getNota());
+             
+                cdb.ps.setString(1, clsA.getFecha());
+                cdb.ps.setString(2, clsA.getFechadesde());
+                cdb.ps.setString(3, clsA.getFechahasta());
+                cdb.ps.setString(4, clsA.getNota());
                 
-                cdb.ps.setBoolean(7, clsA.isEssalud());
-                cdb.ps.setBoolean(8, clsA.isSctrsalud());
-                cdb.ps.setBoolean(9, clsA.isSctrpensiones());
-                cdb.ps.setBoolean(10, clsA.isPdtplame());
-                cdb.ps.setBoolean(11, clsA.isAfp());
-                cdb.ps.setBoolean(12, clsA.isOnp());
+                cdb.ps.setBoolean(5, clsA.isEssalud());
+                cdb.ps.setBoolean(6, clsA.isSctrsalud());
+                cdb.ps.setBoolean(7, clsA.isSctrpensiones());
+                cdb.ps.setBoolean(8, clsA.isPdtplame());
+                cdb.ps.setBoolean(9, clsA.isAfp());
+                cdb.ps.setBoolean(10, clsA.isOnp());
 
-                cdb.ps.setString(13, clsA.getIdarea());
+                cdb.ps.setString(11, clsA.getIdarea());
 
-                cdb.ps.setString(14, clsA.getIdtipopersonal());
-                cdb.ps.setString(15, clsA.getIdempresacolaboradora());
+                cdb.ps.setString(12, clsA.getIdtipopersonal());
+                cdb.ps.setString(13, clsA.getIdempresacolaboradora());
 
                 cdb.ps.executeUpdate();
 
                 
 
             } else {
-                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO acceso VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO acceso VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-                cdb.ps.setInt(1, clsA.getIdacceso());
+             
                 
-                cdb.ps.setString(2, clsA.getIdpersonal());
-                cdb.ps.setString(3, clsA.getFecha());
-                cdb.ps.setString(4, clsA.getFechadesde());
-                cdb.ps.setString(5, clsA.getFechahasta());
-                cdb.ps.setString(6, clsA.getNota());
+                cdb.ps.setString(1, clsA.getIdpersonal());
+                cdb.ps.setString(2, clsA.getFecha());
+                cdb.ps.setString(3, clsA.getFechadesde());
+                cdb.ps.setString(4, clsA.getFechahasta());
+                cdb.ps.setString(5, clsA.getNota());
                 
-                cdb.ps.setBoolean(7, clsA.isEssalud());
-                cdb.ps.setBoolean(8, clsA.isSctrsalud());
-                cdb.ps.setBoolean(9, clsA.isSctrpensiones());
-                cdb.ps.setBoolean(10, clsA.isPdtplame());
-                cdb.ps.setBoolean(11, clsA.isAfp());
-                cdb.ps.setBoolean(12, clsA.isOnp());
+                cdb.ps.setBoolean(6, clsA.isEssalud());
+                cdb.ps.setBoolean(7, clsA.isSctrsalud());
+                cdb.ps.setBoolean(8, clsA.isSctrpensiones());
+                cdb.ps.setBoolean(9, clsA.isPdtplame());
+                cdb.ps.setBoolean(10, clsA.isAfp());
+                cdb.ps.setBoolean(11, clsA.isOnp());
 
-                cdb.ps.setString(13, clsA.getIdarea());
+                cdb.ps.setString(12, clsA.getIdarea());
                
-                cdb.ps.setString(14, clsA.getIdtipopersonal());
-                cdb.ps.setString(15, clsA.getIdempresacolaboradora());
+                cdb.ps.setString(13, clsA.getIdtipopersonal());
+                cdb.ps.setString(14, clsA.getIdempresacolaboradora());
                 cdb.ps.executeUpdate();
 
             }
 
         } else {
-                cdb.ps = cdb.conexion.prepareStatement("INSERT INTO acceso VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                 cdb.ps = cdb.conexion.prepareStatement("INSERT INTO acceso VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-                cdb.ps.setInt(1, clsA.getIdacceso());
+             
                 
-                cdb.ps.setString(2, clsA.getIdpersonal());
-                cdb.ps.setString(3, clsA.getFecha());
-                cdb.ps.setString(4, clsA.getFechadesde());
-                cdb.ps.setString(5, clsA.getFechahasta());
-                cdb.ps.setString(6, clsA.getNota());
+                cdb.ps.setString(1, clsA.getIdpersonal());
+                cdb.ps.setString(2, clsA.getFecha());
+                cdb.ps.setString(3, clsA.getFechadesde());
+                cdb.ps.setString(4, clsA.getFechahasta());
+                cdb.ps.setString(5, clsA.getNota());
                 
-                cdb.ps.setBoolean(7, clsA.isEssalud());
-                cdb.ps.setBoolean(8, clsA.isSctrsalud());
-                cdb.ps.setBoolean(9, clsA.isSctrpensiones());
-                cdb.ps.setBoolean(10, clsA.isPdtplame());
-                cdb.ps.setBoolean(11, clsA.isAfp());
-                cdb.ps.setBoolean(12, clsA.isOnp());
+                cdb.ps.setBoolean(6, clsA.isEssalud());
+                cdb.ps.setBoolean(7, clsA.isSctrsalud());
+                cdb.ps.setBoolean(8, clsA.isSctrpensiones());
+                cdb.ps.setBoolean(9, clsA.isPdtplame());
+                cdb.ps.setBoolean(10, clsA.isAfp());
+                cdb.ps.setBoolean(11, clsA.isOnp());
 
-                cdb.ps.setString(13, clsA.getIdarea());
-                
-                cdb.ps.setString(14, clsA.getIdtipopersonal());
-cdb.ps.setString(15, clsA.getIdempresacolaboradora());
-
+                cdb.ps.setString(12, clsA.getIdarea());
+               
+                cdb.ps.setString(13, clsA.getIdtipopersonal());
+                cdb.ps.setString(14, clsA.getIdempresacolaboradora());
                 cdb.ps.executeUpdate();
         }
 
@@ -129,12 +127,12 @@ cdb.ps.setString(15, clsA.getIdempresacolaboradora());
             SQLException {
 
         Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
-        cdb.un_sql = "SELECT * FROM acceso WHERE idAcceso='" + clsA.getIdacceso() + "'";
+        cdb.un_sql = "SELECT * FROM acceso WHERE idPersonal='" + clsA.getIdpersonal() + "'";
         cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
 
         if (cdb.resultado != null) {
             if (cdb.resultado.next()) {
-                clsA.setIdacceso(cdb.resultado.getInt("idAcceso"));
+                
 
                 clsA.setIdpersonal(cdb.resultado.getString("idPersonal"));
                 clsA.setFecha(cdb.resultado.getString("Fecha"));

@@ -48,6 +48,7 @@ public class IDCheck extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1AutorizarAcceso = new javax.swing.JMenuItem();
+        jMenuItemRegistro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +86,14 @@ public class IDCheck extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem1AutorizarAcceso);
+
+        jMenuItemRegistro.setText("Registro");
+        jMenuItemRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRegistroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemRegistro);
 
         menuBar.add(jMenu2);
 
@@ -155,6 +164,14 @@ public class IDCheck extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem1AutorizarAccesoActionPerformed
 
+    private void jMenuItemRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistroActionPerformed
+       
+Registro registro1 = new Registro();
+
+registro1.show();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemRegistroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +224,7 @@ public class IDCheck extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1AutorizarAcceso;
     private javax.swing.JMenuItem jMenuItemBuscaColaborador;
+    private javax.swing.JMenuItem jMenuItemRegistro;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItemColaborador;
     // End of variables declaration//GEN-END:variables

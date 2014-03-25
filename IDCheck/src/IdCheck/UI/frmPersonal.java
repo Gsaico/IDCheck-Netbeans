@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -208,6 +209,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
         lblFoto.setBackground(new java.awt.Color(0, 0, 0));
         lblFoto.setText("Foto");
+        lblFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblFotoMouseClicked(evt);
@@ -290,6 +292,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                 int longitudBytes = (int) se.getSelectedFile().length();
 
                 fils = se.getSelectedFile().getPath();
+                
 
                 Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT);
                 lblFoto.setIcon(new ImageIcon(icono));
@@ -451,9 +454,24 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                 try {
                     foto = personal1.leerFoto(txtDNI.getText());
                     if (foto != null) {
-                        lblFoto.setIcon(foto);
+                        ImageIcon imgIcon;
+                        
+                        imgIcon=foto;
+                        
+                        Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
+                        Icon iconoEscalado = new ImageIcon(imgEscalada);
+                        lblFoto.setIcon(iconoEscalado);
+                        
+                        btnSave.setEnabled(true);
+                        
                     } else {
-                        lblFoto.setIcon(new CustomImageIcon(getClass().getResource("/imagenes/usuario.png")));
+                        ImageIcon imgIcon = new ImageIcon(getClass().getResource("/imagenes/usuario.png"));
+                        Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
+                        Icon iconoEscalado = new ImageIcon(imgEscalada);
+                        lblFoto.setIcon(iconoEscalado);
+                        
+                         btnSave.setEnabled(false);
+                        
                     }
 
                 } catch (IOException ex) {

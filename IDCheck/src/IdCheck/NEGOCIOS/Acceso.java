@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Acceso {
    
-    private int idacceso;
+   
     private String idpersonal;
     private String fecha;
     private String fechadesde;
@@ -28,13 +28,7 @@ public class Acceso {
 //dato obligatorio
     private String idtipopersonal;
 
-    public int getIdacceso() {
-        return idacceso;
-    }
-
-    public void setIdacceso(int idacceso) {
-        this.idacceso = idacceso;
-    }
+  
 
     public String getIdpersonal() {
         return idpersonal;
