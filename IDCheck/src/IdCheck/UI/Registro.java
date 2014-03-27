@@ -335,23 +335,64 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
             this.lblTipoPersonal.setText(logicaacceso1.getNombretipopersonal());
               
        
-            System.out.println(logicaacceso1.getAutorizacion());
+           // System.out.println(logicaacceso1.getAutorizacion());
             
             if (logicaacceso1.getAutorizacion() == 1) {
                 lblAcceso.setText("Acceso Permitido");
                 lblAcceso.setForeground(Color.GREEN);
-                    
+                    // ---> verifico el registro de ingreso y salidas
+                Registrox registrov = new Registrox();
+                registrov.setIdAcceso(logicaacceso1.getIdacceso());
+                registrov.UltimoRegistrodeColaborador();
+                // fin <---
+          
+                   System.out.println("---"+registrov.getIdEstado() +"---");
+                   
+                   int estado;
+                   
+                   estado= Integer.parseInt(registrov.getIdEstado());
+                   
+                   
+                   
+                   
+                if (estado==1){
+                
                 Registrox registro1 = new Registrox();
-
-               // registro1.setFecha(null);
-               // registro1.setHora(null);
                 registro1.setIdTipoPersonal(logicaacceso1.getIdTipoPersonal());
                 registro1.setIdEmpresaColaboradora(logicaacceso1.getIdEmpresaColaboradora());
                 registro1.setIdAcceso(logicaacceso1.getIdacceso());
-
-                registro1.setIdEstado("1");
-
+                registro1.setIdEstado("0");
                 registro1.grabar();
+                
+                      System.out.println("salida");
+                    
+                }else if (estado==0){
+                Registrox registro1 = new Registrox();
+                registro1.setIdTipoPersonal(logicaacceso1.getIdTipoPersonal());
+                registro1.setIdEmpresaColaboradora(logicaacceso1.getIdEmpresaColaboradora());
+                registro1.setIdAcceso(logicaacceso1.getIdacceso());
+                registro1.setIdEstado("1");
+                registro1.grabar();
+                    System.out.println("ingreso");
+                
+                }else{
+                Registrox registro1 = new Registrox();
+                registro1.setIdTipoPersonal(logicaacceso1.getIdTipoPersonal());
+                registro1.setIdEmpresaColaboradora(logicaacceso1.getIdEmpresaColaboradora());
+                registro1.setIdAcceso(logicaacceso1.getIdacceso());
+                registro1.setIdEstado("1");
+                registro1.grabar();
+                
+                    
+                }
+                
+                
+                
+                
+                
+                
+                
+                
                 
                     
                     
@@ -378,7 +419,7 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
                         Icon iconoEscalado = new ImageIcon(imgEscalada);
                         lblFoto.setIcon(iconoEscalado);
                         this.txtDNI.setText(null);
-                         this.txtDNI.requestFocus();
+                        this.txtDNI.requestFocus();
                      
                         
                     } else {

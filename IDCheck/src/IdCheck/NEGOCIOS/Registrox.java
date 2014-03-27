@@ -83,6 +83,11 @@ private String idAcceso;
    pdb.Grabar();
    }
 
-    
+      public Registrox UltimoRegistrodeColaborador() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException
+   {
+   RegistroBD pdb= new RegistroBD(this);
+   pdb.UltimoRegistrodeColaborador();
+       return  pdb.UltimoRegistrodeColaborador();
+   }
     
 }

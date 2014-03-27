@@ -56,4 +56,28 @@ public class RegistroBD {
 
     }
     
+    public Registrox UltimoRegistrodeColaborador() throws ClassNotFoundException,
+            InstantiationException,
+            IllegalAccessException,
+            SQLException {
+
+        Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+        cdb.un_sql = "SELECT  idRegistro,    Fechayhora, idTipoPersonal,    idEmpresaColaboradora,  idAcceso,    idEstado FROM registro WHERE  idAcceso='" + clsReg.getIdAcceso() + "' order by Fechayhora desc  limit 1";
+        cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
+
+        if (cdb.resultado != null) {
+            if (cdb.resultado.next()) {
+                clsReg.setIdRegistro(cdb.resultado.getString("idRegistro"));
+                clsReg.setFechayhora(cdb.resultado.getString("Fechayhora"));
+                clsReg.setIdTipoPersonal(cdb.resultado.getString("idTipoPersonal"));
+                clsReg.setIdEmpresaColaboradora(cdb.resultado.getString("idEmpresaColaboradora"));
+                clsReg.setIdAcceso(cdb.resultado.getString("idAcceso"));
+              clsReg.setIdEstado(cdb.resultado.getString("idEstado"));
+            }
+        }
+
+        return clsReg;
+
+    }
+    
 }
