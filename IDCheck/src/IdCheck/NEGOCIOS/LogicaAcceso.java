@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * @author Pervac
  */
 public class LogicaAcceso {
-    private String autorizacion;
+    private int autorizacion;
     private String idacceso;
     private FileInputStream  foto;
     private String apellidos;
@@ -23,12 +23,14 @@ public class LogicaAcceso {
     private String dni;
     private String nombreempresa;
     private String nombretipopersonal;
+    private String idTipoPersonal;
+    private String idEmpresaColaboradora;
 
-    public String getAutorizacion() {
+    public int getAutorizacion() {
         return autorizacion;
     }
 
-    public void setAutorizacion(String autorizacion) {
+    public void setAutorizacion(int autorizacion) {
         this.autorizacion = autorizacion;
     }
 
@@ -87,6 +89,26 @@ public class LogicaAcceso {
     public void setNombretipopersonal(String nombretipopersonal) {
         this.nombretipopersonal = nombretipopersonal;
     }
+
+    public String getIdTipoPersonal() {
+        return idTipoPersonal;
+    }
+
+    public void setIdTipoPersonal(String idTipoPersonal) {
+        this.idTipoPersonal = idTipoPersonal;
+    }
+
+    public String getIdEmpresaColaboradora() {
+        return idEmpresaColaboradora;
+    }
+
+    public void setIdEmpresaColaboradora(String idEmpresaColaboradora) {
+        this.idEmpresaColaboradora = idEmpresaColaboradora;
+    }
+    
+    
+
+   
     
     
        public LogicaAcceso VerificarAutorizacion() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException

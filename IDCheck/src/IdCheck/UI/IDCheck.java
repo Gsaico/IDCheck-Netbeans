@@ -165,10 +165,13 @@ public class IDCheck extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1AutorizarAccesoActionPerformed
 
     private void jMenuItemRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistroActionPerformed
-       
+
+        
 Registro registro1 = new Registro();
 
 registro1.show();
+
+this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemRegistroActionPerformed
 

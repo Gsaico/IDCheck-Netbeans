@@ -10,7 +10,10 @@ import Arduino.Arduino;
 import IdCheck.NEGOCIOS.CustomImageIcon;
 import IdCheck.NEGOCIOS.LogicaAcceso;
 import IdCheck.NEGOCIOS.Personal;
+import IdCheck.NEGOCIOS.Registrox;
 import java.awt.Color;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,13 +39,34 @@ public class Registro extends javax.swing.JFrame {
     private static final String Rojo_ON="3";  
     
     public Registro() {
+        
+    
+    
+        //Modo pantalla completa 
+       // GraphicsDevice grafica = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+      //  grafica.setFullScreenWindow(this);
+
+        //setEnabled(true);
+        //setResizable(true);
+      //  setVisible(true);
+        
+//this.setExtendedState(6);
+//setVisible(true);
+        //* Fin modo pantalla completa
+        
+        
         initComponents();
-     
-        try {
-         Arduino.ArduinoTX("COM4", 2000, 9600);
-     } catch (Exception ex) {
-         Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-     }
+
+        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+
+      this.txtDNI.requestFocus();
+     // this.txtDNI.setVisible(false);
+      //   try {
+      //      Arduino.ArduinoTX("COM4", 2000, 9600);
+      //  } catch (Exception ex) {
+      //      Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+      //  }
        
     }
 
@@ -64,16 +88,26 @@ public class Registro extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
+        lblNombres = new javax.swing.JLabel();
         txtDNI = new javax.swing.JTextField();
         lblApellidos = new javax.swing.JLabel();
-        lblNombres = new javax.swing.JLabel();
+        lblTipoPersonal = new javax.swing.JLabel();
         lblDNI = new javax.swing.JLabel();
         lblEmpresa = new javax.swing.JLabel();
-        lblTipoPersonal = new javax.swing.JLabel();
+        lblAcceso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(51, 255, 51));
+        setForeground(java.awt.Color.white);
+        setIconImages(null);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 0)));
@@ -90,6 +124,7 @@ public class Registro extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("OFF");
@@ -124,29 +159,33 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel3.setText("Verde");
 
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(325, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +202,17 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton3)
                     .addComponent(jLabel3))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addGap(163, 163, 163)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblNombres.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblNombres.setForeground(new java.awt.Color(102, 102, 102));
+        lblNombres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombres.setText("Nombres");
+
+        txtDNI.setBackground(java.awt.SystemColor.control);
         txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDNIActionPerformed(evt);
@@ -182,73 +229,76 @@ public class Registro extends javax.swing.JFrame {
         lblApellidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApellidos.setText("Apellidos");
 
-        lblNombres.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblNombres.setForeground(new java.awt.Color(102, 102, 102));
-        lblNombres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNombres.setText("Nombres");
+        lblTipoPersonal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblTipoPersonal.setForeground(new java.awt.Color(102, 102, 102));
+        lblTipoPersonal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipoPersonal.setText("Tipo de personal");
 
         lblDNI.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(102, 102, 102));
         lblDNI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDNI.setText("DNI");
 
-        lblEmpresa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblEmpresa.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         lblEmpresa.setForeground(new java.awt.Color(102, 102, 102));
         lblEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEmpresa.setText("Empresa");
 
-        lblTipoPersonal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblTipoPersonal.setForeground(new java.awt.Color(102, 102, 102));
-        lblTipoPersonal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTipoPersonal.setText("Tipo de personal");
+        lblAcceso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblAcceso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAcceso.setText("?");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblApellidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDNI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblEmpresa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTipoPersonal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+            .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtDNI, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(lblAcceso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblApellidos)
+                .addGap(18, 18, 18)
+                .addComponent(lblNombres)
+                .addGap(18, 18, 18)
+                .addComponent(lblDNI)
+                .addGap(18, 18, 18)
+                .addComponent(lblEmpresa)
+                .addGap(18, 18, 18)
+                .addComponent(lblTipoPersonal)
+                .addGap(18, 18, 18)
+                .addComponent(lblAcceso)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTipoPersonal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblDNI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEmpresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblApellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(46, Short.MAX_VALUE))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblApellidos)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNombres)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDNI)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblEmpresa)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTipoPersonal)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -273,10 +323,10 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
             this.lblEmpresa.setText("?");
             this.lblTipoPersonal.setText("?");
         
+       
         
         
-        
-        if (logicaacceso1.getAutorizacion() != null) {
+        if (logicaacceso1.getDni() != null) {
 
             this.lblApellidos.setText(logicaacceso1.getApellidos());
             this.lblNombres.setText(logicaacceso1.getNombres());
@@ -284,6 +334,35 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
             this.lblEmpresa.setText(logicaacceso1.getNombreempresa());
             this.lblTipoPersonal.setText(logicaacceso1.getNombretipopersonal());
               
+       
+            System.out.println(logicaacceso1.getAutorizacion());
+            
+            if (logicaacceso1.getAutorizacion() == 1) {
+                lblAcceso.setText("Acceso Permitido");
+                lblAcceso.setForeground(Color.GREEN);
+                    
+                Registrox registro1 = new Registrox();
+
+               // registro1.setFecha(null);
+               // registro1.setHora(null);
+                registro1.setIdTipoPersonal(logicaacceso1.getIdTipoPersonal());
+                registro1.setIdEmpresaColaboradora(logicaacceso1.getIdEmpresaColaboradora());
+                registro1.setIdAcceso(logicaacceso1.getIdacceso());
+
+                registro1.setIdEstado("1");
+
+                registro1.grabar();
+                
+                    
+                    
+            } else if (logicaacceso1.getAutorizacion() == 0) {
+                  lblAcceso.setText("ACCESO DENEGADO");
+                lblAcceso.setForeground(Color.RED);
+                    
+            }
+
+             
+            
             CustomImageIcon foto;
             Personal personal1 = new Personal();
               try {
@@ -298,6 +377,8 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
                         Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
                         Icon iconoEscalado = new ImageIcon(imgEscalada);
                         lblFoto.setIcon(iconoEscalado);
+                        this.txtDNI.setText(null);
+                         this.txtDNI.requestFocus();
                      
                         
                     } else {
@@ -306,6 +387,8 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
                         Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
                         Icon iconoEscalado = new ImageIcon(imgEscalada);
                         lblFoto.setIcon(iconoEscalado);
+                        this.txtDNI.setText(null);
+                        this.txtDNI.requestFocus();
                 
 
                     }
@@ -319,6 +402,8 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
                         Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
                         Icon iconoEscalado = new ImageIcon(imgEscalada);
                         lblFoto.setIcon(iconoEscalado);
+                        this.txtDNI.setText(null);
+                         this.txtDNI.requestFocus();
         }
 
     } catch (ClassNotFoundException ex) {
@@ -378,6 +463,18 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
         }  // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+       
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -418,11 +515,14 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAcceso;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblEmpresa;

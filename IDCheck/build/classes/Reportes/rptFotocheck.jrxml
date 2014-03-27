@@ -34,7 +34,7 @@ WHERE personal.`idPersonal`=$P{DNI}]]>
 				<textFieldExpression><![CDATA[$F{personal_Apellidos}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="FillFrame">
-				<reportElement stretchType="RelativeToBandHeight" x="29" y="11" width="99" height="132" uuid="8a89d0b1-ab04-4fc8-91c9-75f0f34f8427"/>
+				<reportElement stretchType="RelativeToBandHeight" x="28" y="11" width="99" height="132" uuid="8a89d0b1-ab04-4fc8-91c9-75f0f34f8427"/>
 				<imageExpression><![CDATA[$F{personal_Foto}]]></imageExpression>
 			</image>
 			<textField>
@@ -46,7 +46,7 @@ WHERE personal.`idPersonal`=$P{DNI}]]>
 			</textField>
 			<componentElement>
 				<reportElement x="10" y="206" width="134" height="34" uuid="531222dd-09a0-45c5-8b0a-f7c3e74e3b6d"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39 (Extended)" drawText="true" checksumRequired="true">
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39 (Extended)" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA[$F{personal_idPersonal}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
