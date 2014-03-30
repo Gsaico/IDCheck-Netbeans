@@ -62,11 +62,11 @@ public class Registro extends javax.swing.JFrame {
 
       this.txtDNI.requestFocus();
      // this.txtDNI.setVisible(false);
-      //   try {
-      //      Arduino.ArduinoTX("COM4", 2000, 9600);
-      //  } catch (Exception ex) {
-      //      Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-      //  }
+         try {
+           Arduino.ArduinoTX("COM4", 2000, 9600);
+        } catch (Exception ex) {
+           Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
 
