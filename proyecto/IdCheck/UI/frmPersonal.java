@@ -50,9 +50,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
       // CargarComboTipoPersonal();
        limpiarcontenedores();
-       
-       btnSave.setEnabled(false);
-       btnImprimir.setEnabled(false);
     }
 
    
@@ -298,8 +295,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                 Image icono = ImageIO.read(se.getSelectedFile()).getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT);
                 lblFoto.setIcon(new ImageIcon(icono));
                 lblFoto.updateUI();
-                
-                btnSave.setEnabled(true);
               //  lblFoto.setIcon(new ImageIcon(fil));
 
             } catch (FileNotFoundException ex) {
@@ -337,10 +332,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             personal1.setFoto(fis);
             }else
             {
-                
             personal1.setFoto(null);
-            
-            
             }
             
         } catch (Exception e) {
@@ -356,15 +348,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             
             personal1.grabar();
             
-              limpiarcontenedores();
- ImageIcon imgIcon = new ImageIcon(getClass().getResource("/imagenes/usuario.png"));
-        Image imgEscalada = imgIcon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
-        Icon iconoEscalado = new ImageIcon(imgEscalada);
-        lblFoto.setIcon(iconoEscalado);              
-              
-              
-              
-              
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -427,7 +410,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         txtFechaNac.setText("");
         txtCargo.setText("");
        
-
       
     }
     
@@ -479,8 +461,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                         lblFoto.setIcon(iconoEscalado);
                         
                         btnSave.setEnabled(true);
-                    
-       btnImprimir.setEnabled(true);
                         
                     } else {
                         ImageIcon imgIcon = new ImageIcon(getClass().getResource("/imagenes/usuario.png"));
@@ -489,7 +469,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                         lblFoto.setIcon(iconoEscalado);
                         
                          btnSave.setEnabled(false);
-                        btnImprimir.setEnabled(true);
+                        
                     }
 
                 } catch (IOException ex) {

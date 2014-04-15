@@ -172,18 +172,6 @@ Registro registro1 = new Registro();
 registro1.show();
 
 this.setVisible(false);
-
-
- 
-           // this.escritorio.removeAll();
-           // this.escritorio.repaint();
-           // Registro hijoform= new Registro();
-           // escritorio.add(hijoform);
-           // hijoform.show();   
-       
-
-
-
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemRegistroActionPerformed
 

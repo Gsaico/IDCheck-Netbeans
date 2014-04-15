@@ -63,10 +63,10 @@ public class frmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
-        txtIDUsuario.setText("11111111");
+        txtIDUsuario.setText("09954108");
         getContentPane().add(txtIDUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 110, -1));
 
-        txtPassword.setText("12345");
+        txtPassword.setText("09954108");
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 110, -1));
 
         jLabel1.setText("Usuario");
