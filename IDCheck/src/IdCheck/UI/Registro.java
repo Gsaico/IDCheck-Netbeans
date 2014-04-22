@@ -144,7 +144,6 @@ public class Registro extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +153,8 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(lblDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                     .addComponent(lblEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTipoPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-                    .addComponent(lblAcceso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblAcceso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -230,7 +230,7 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
             this.lblTipoPersonal.setText(logicaacceso1.getNombretipopersonal());
               
        
-           // System.out.println(logicaacceso1.getAutorizacion());
+          System.out.println(logicaacceso1.getAutorizacion());
             
             if (logicaacceso1.getAutorizacion() == 1) {
                 lblAcceso.setText("Acceso Permitido");
@@ -241,7 +241,13 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
 
                 } catch (Exception ex) {
                     Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-                }// TODO add your handling code here:
+                }
+
+
+                
+                
+                
+// TODO add your handling code here:
                     // ---> verifico el registro de ingreso y salidas
                 Registrox registrov = new Registrox();
                 registrov.setIdAcceso(logicaacceso1.getIdacceso());
@@ -277,7 +283,7 @@ if (evt.getKeyCode() == evt.VK_ENTER) {
                 registro1.grabar();
                     System.out.println("ingreso");
                 
-                }else{
+                }else {
                 Registrox registro1 = new Registrox();
                 registro1.setIdTipoPersonal(logicaacceso1.getIdTipoPersonal());
                 registro1.setIdEmpresaColaboradora(logicaacceso1.getIdEmpresaColaboradora());

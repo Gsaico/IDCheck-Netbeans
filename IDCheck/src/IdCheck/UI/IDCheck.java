@@ -45,7 +45,6 @@ public class IDCheck extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         openMenuItemColaborador = new javax.swing.JMenuItem();
         jMenuItemBuscaColaborador = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1AutorizarAcceso = new javax.swing.JMenuItem();
         jMenuItemRegistro = new javax.swing.JMenuItem();
@@ -71,9 +70,6 @@ public class IDCheck extends javax.swing.JFrame {
             }
         });
         fileMenu.add(jMenuItemBuscaColaborador);
-
-        jMenu1.setText("jMenu1");
-        fileMenu.add(jMenu1);
 
         menuBar.add(fileMenu);
 
@@ -235,7 +231,6 @@ this.setVisible(false);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1AutorizarAcceso;
     private javax.swing.JMenuItem jMenuItemBuscaColaborador;
